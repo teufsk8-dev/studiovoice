@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Per-candle typed judgments. The model judges only; code gates, sizes and executes.",
+  "fields": {
+    "regime":        {"type": "choice", "options": ["trending", "mean_reverting", "high_vol", "crisis"],
+                      "question": "Which market regime best describes this state?"},
+    "direction":     {"type": "choice", "options": ["long", "short", "neutral"],
+                      "question": "Over the next candle horizon, is the expected move net of costs up, down, or neither?"},
+    "toxic_flow":    {"type": "noul",
+                      "question": "Is recent order flow likely informed/toxic against a new position?"},
+    "setup_quality": {"type": "score", "min": 0, "max": 3,
+                      "question": "How clean is the setup: 0 none, 1 weak, 2 good, 3 textbook?"},
+    "risk_state":    {"type": "choice", "options": ["safe", "near_limit", "reduce"],
+                      "question": "Given inventory, drawdown and volatility, is it safe to add risk?"}
+  }
+}
